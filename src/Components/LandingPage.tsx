@@ -1,7 +1,7 @@
 
 import React, { useState } from 'react';
 import { TextField, Button, Typography } from '@mui/material';
-import theme from '../theme'; // Import your theme object
+import theme from '../theme'; 
 import { useNavigate } from "react-router-dom";
 function LandingPage() {
   const navigate = useNavigate();
