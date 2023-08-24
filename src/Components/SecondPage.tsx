@@ -4,7 +4,7 @@ import { DataGrid } from '@mui/x-data-grid';
 import { Typography } from '@mui/material';
 import theme from '../theme'; // Import your theme object
 import axios from 'axios';
-import DepartmentTree from './DepartmentTree'; // Adjust the path
+import DepartmentHierarchy from './DepartmentHierarchy'; // Adjust the path
 interface Post {
   userId: number;
   id: number;
@@ -12,40 +12,16 @@ interface Post {
   body: string;
 }
 const departments = [
-    {
-      id: 1,
-      name: 'Department 1',
-      subDepartments: [
-        {
-          id: 11,
-          name: 'Sub Department 1.1',
-          subDepartments: [],
-        },
-        {
-          id: 12,
-          name: 'Sub Department 1.2',
-          subDepartments: [
-            {
-              id: 121,
-              name: 'Sub Department 1.2.1',
-              subDepartments: [],
-            },
-          ],
-        },
-      ],
-    },
-    {
-      id: 2,
-      name: 'Department 2',
-      subDepartments: [
-        {
-          id: 21,
-          name: 'Sub Department 2.1',
-          subDepartments: [],
-        },
-      ],
-    },
-  ];
+  {
+    department: 'customer_service',
+    sub_departments: ['support', 'customer_success'],
+  },
+  {
+    department: 'design',
+    sub_departments: ['graphic_design', 'product_design', 'web_design'],
+  },
+  // ... (add more departments)
+];
 function SecondPage() {
   const navigate = useNavigate();
 
@@ -88,7 +64,7 @@ function SecondPage() {
       <div style={{ height: '85vh', width: '100vw', marginTop: theme.spacing(2) }}>
         <DataGrid rows={posts} columns={columns} loading={posts.length==0} checkboxSelection />
       </div>
-      <DepartmentTree departments={departments} />
+      <DepartmentHierarchy departments={departments} />
     </div>
 
   );
