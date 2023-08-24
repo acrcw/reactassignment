@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState } from "react";
 import {
   List,
   ListItem,
@@ -7,8 +7,8 @@ import {
   Checkbox,
   IconButton,
   styled,
-} from '@mui/material';
-import { ExpandMore, ExpandLess } from '@mui/icons-material';
+} from "@mui/material";
+import { ExpandMore, ExpandLess } from "@mui/icons-material";
 
 const StyledListItem = styled(ListItem)(({ theme }) => ({
   paddingLeft: theme.spacing(2),
@@ -23,7 +23,9 @@ interface DepartmentHierarchyProps {
   departments: Department[];
 }
 
-const DepartmentHierarchy: React.FC<DepartmentHierarchyProps> = ({ departments }) => {
+const DepartmentHierarchy: React.FC<DepartmentHierarchyProps> = ({
+  departments,
+}) => {
   const [openIndexes, setOpenIndexes] = useState<number[]>([]);
   const [selectedDepartments, setSelectedDepartments] = useState<string[]>([]);
 
@@ -36,7 +38,9 @@ const DepartmentHierarchy: React.FC<DepartmentHierarchyProps> = ({ departments }
   };
 
   const handleDepartmentToggle = (department: Department) => {
-    const newSelectedDepartments = selectedDepartments.includes(department.department)
+    const newSelectedDepartments = selectedDepartments.includes(
+      department.department
+    )
       ? selectedDepartments.filter((name) => name !== department.department)
       : [...selectedDepartments, department.department];
 
@@ -50,7 +54,8 @@ const DepartmentHierarchy: React.FC<DepartmentHierarchyProps> = ({ departments }
     } else {
       // Deselect all sub-departments
       department.sub_departments.forEach((subDepartment) => {
-        const subDepartmentIndex = newSelectedDepartments.indexOf(subDepartment);
+        const subDepartmentIndex =
+          newSelectedDepartments.indexOf(subDepartment);
         if (subDepartmentIndex !== -1) {
           newSelectedDepartments.splice(subDepartmentIndex, 1);
         }
@@ -71,7 +76,10 @@ const DepartmentHierarchy: React.FC<DepartmentHierarchyProps> = ({ departments }
       <StyledListItem button onClick={() => handleToggle(index)}>
         <Checkbox
           edge="start"
-          checked={selectedDepartments.includes(department.department) || allSubDepartmentsSelected(department)}
+          checked={
+            selectedDepartments.includes(department.department) ||
+            allSubDepartmentsSelected(department)
+          }
           onClick={(e) => e.stopPropagation()}
           onChange={() => handleDepartmentToggle(department)}
         />
@@ -92,7 +100,11 @@ const DepartmentHierarchy: React.FC<DepartmentHierarchyProps> = ({ departments }
 
   const renderSubDepartment = (subDepartment: string, subIndex: number) => (
     <div key={subIndex}>
-      <StyledListItem button className={StyledListItem} onClick={(e) => e.stopPropagation()}>
+      <StyledListItem
+        button
+        className={StyledListItem}
+        onClick={(e) => e.stopPropagation()}
+      >
         <Checkbox
           edge="start"
           checked={selectedDepartments.includes(subDepartment)}
@@ -113,7 +125,9 @@ const DepartmentHierarchy: React.FC<DepartmentHierarchyProps> = ({ departments }
 
   return (
     <List>
-      {departments.map((department, index) => renderDepartment(department, index))}
+      {departments.map((department, index) =>
+        renderDepartment(department, index)
+      )}
     </List>
   );
 };
