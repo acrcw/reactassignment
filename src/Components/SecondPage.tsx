@@ -2,9 +2,9 @@ import React, { useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { DataGrid } from '@mui/x-data-grid';
 import { Typography } from '@mui/material';
-import theme from '../theme'; // Import your theme object
+import theme from '../theme';
 import axios from 'axios';
-import DepartmentHierarchy from './DepartmentHierarchy'; // Adjust the path
+import DepartmentHierarchy from './DepartmentHierarchy'; 
 interface Post {
   userId: number;
   id: number;
@@ -20,13 +20,13 @@ const departments = [
     department: 'design',
     sub_departments: ['graphic_design', 'product_design', 'web_design'],
   },
-  // ... (add more departments)
+
 ];
 function SecondPage() {
   const navigate = useNavigate();
 
   useEffect(() => {
-    // Check if user details are available in local storage
+   
     const userDataString = localStorage.getItem('userData');
     if (!userDataString) {
       alert("Please fill the data first before proceeding to this page");

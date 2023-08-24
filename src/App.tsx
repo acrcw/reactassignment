@@ -1,13 +1,13 @@
 import React from "react";
 import { ThemeProvider, CssBaseline } from "@mui/material";
-import theme from "./theme"; // Import your created theme
+import theme from "./theme"; 
 import LandingPage from "./Components/LandingPage";
 import {
   BrowserRouter as Router,
   Routes,
   Route,
   Navigate,
-} from "react-router-dom"; // Import Router and Routes
+} from "react-router-dom"; 
 import SecondPage from "./Components/SecondPage";
 function App() {
   return (
