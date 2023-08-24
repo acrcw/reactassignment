@@ -6,7 +6,6 @@ import theme from '../theme';
 import axios from 'axios';
 import DepartmentHierarchy from './DepartmentHierarchy'; 
 interface Post {
-  
   userId: number;
   id: number;
   title: string;
